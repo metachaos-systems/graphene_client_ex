@@ -5,7 +5,7 @@ defmodule GrapheneTest do
 
   setup_all context do
     url = "wss://bitshares.openledger.info/ws"
-    Graphene.RefStore.start_link
+    Graphene.IdStore.start_link
     Graphene.WS.start_link(url)
     %{
       params: %{get_accounts: [@db_api, "get_accounts", [["1.2.0"]]],

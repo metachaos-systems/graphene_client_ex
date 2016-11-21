@@ -1,4 +1,4 @@
-defmodule Graphene.RefStore do
+defmodule Graphene.IdStore do
   @moduledoc """
   Holds state with data linking jsonrpc call ids and params for pattern
   matching in the handler

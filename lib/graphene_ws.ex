@@ -44,7 +44,7 @@ defmodule Graphene.WS do
   def websocket_handle({:text, msg}, _conn_state, state) do
     data = JSON.decode!(msg)
     id = data["id"]
-    {pid, params} = Graphene.RefStore.get(id)
+    {pid, params} = Graphene.IdStore.get(id)
     send(pid, {:ws_response, {id, params, data}})
 
     {:ok, state}

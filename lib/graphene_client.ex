@@ -1,6 +1,6 @@
 defmodule Graphene do
   use Application
-  alias Graphene.{RefStore, WS}
+  alias Graphene.{IdStore, WS}
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -13,7 +13,7 @@ defmodule Graphene do
 
     # Define workers and child supervisors to be supervised
     children = [
-      worker(Graphene.RefStore, []),
+      worker(IdStore, []),
       worker(Graphene.WS, [url])
     ]
 
@@ -25,7 +25,7 @@ defmodule Graphene do
 
   def call(params) do
     id = gen_id()
-    RefStore.put(id, {self(), params})
+    IdStore.put(id, {self(), params})
     send_jsonrpc_call(id, params)
 
     response = receive do
