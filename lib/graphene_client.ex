@@ -66,4 +66,8 @@ defmodule Graphene do
      call [@db_api, "get_chain_properties", []]
   end
 
+  def get_global_properties() do
+     call [@db_api, "get_global_properties", []]
+  end
+
 end
