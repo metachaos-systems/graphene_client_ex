@@ -32,4 +32,4 @@ First, add a websockets url for the graphene daemon, for example, `wss://bitshar
       url: "GRAPHENE_URL"
 ```
 
-The most imporant module function is `Steemex.call`. It will block the calling process and return a success tuple with a "result" data from the JSONRPC call response. JSONRPC call ids are handled automatically.
+The main module function is `Graphene.call`. It will block the calling process and return a success tuple with a "result" data from the JSONRPC call response. JSONRPC call ids are handled automatically.
