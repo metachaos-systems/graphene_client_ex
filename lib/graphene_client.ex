@@ -54,4 +54,9 @@ defmodule Graphene do
     call [@db_api, "get_accounts", [account_list]]
   end
 
+  def get_block(block_height) do
+    call [@db_api, "get_block", [block_height]]
+  end
+
+  
 end

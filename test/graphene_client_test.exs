@@ -25,7 +25,10 @@ defmodule GrapheneTest do
     assert [%{"name" => "committee-account"}] = result
   end
 
-
+  test "get_block" do
+    {:ok, result} = Graphene.get_block(1)
+    assert %{"timestamp" => "2015-10-13T14:12:24"} = result
+  end
 
 
 end
