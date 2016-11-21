@@ -1,6 +1,7 @@
 defmodule Graphene do
   use Application
   alias Graphene.{IdStore, WS}
+  @db_api 0
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -47,6 +48,10 @@ defmodule Graphene do
 
   defp gen_id do
     round(:rand.uniform * 1.0e16)
+  end
+
+  def get_accounts(account_list) do
+    call [@db_api, "get_accounts", [account_list]]
   end
 
 end

@@ -13,12 +13,19 @@ defmodule GrapheneTest do
     }
   end
 
-  test "get_accounts", context do
+  test "call get_accounts params", context do
     params = context.params.get_accounts
     {:ok, result} = Graphene.call(params)
 
     assert [%{"name" => "committee-account"}] = result
   end
+
+  test "get_accounts" do
+    {:ok, result} = Graphene.get_accounts(["1.2.0"])
+    assert [%{"name" => "committee-account"}] = result
+  end
+
+
 
 
 end
