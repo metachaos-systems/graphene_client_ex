@@ -47,7 +47,7 @@ defmodule GrapheneClientEx.Mixfile do
 
   defp package do
     [
-     name: :steemex,
+     name: :graphene_client_ex,
      files: ["lib", "mix.exs", "README*", "LICENSE*"],
      maintainers: ["ontofractal"],
      licenses: ["MIT"],
