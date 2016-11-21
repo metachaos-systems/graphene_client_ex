@@ -62,4 +62,8 @@ defmodule Graphene do
      call [@db_api, "get_transaction", [block_height, trx_in_block]]
   end
 
+  def get_chain_properties() do
+     call [@db_api, "get_chain_properties", []]
+  end
+
 end
