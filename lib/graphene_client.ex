@@ -58,5 +58,8 @@ defmodule Graphene do
     call [@db_api, "get_block", [block_height]]
   end
 
-  
+  def get_transaction(block_height, trx_in_block) do
+     call [@db_api, "get_transaction", [block_height, trx_in_block]]
+  end
+
 end

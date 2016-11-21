@@ -1,5 +1,5 @@
 defmodule GrapheneTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Graphene
   @db_api 0
 
@@ -28,6 +28,12 @@ defmodule GrapheneTest do
   test "get_block" do
     {:ok, result} = Graphene.get_block(1)
     assert %{"timestamp" => "2015-10-13T14:12:24"} = result
+  end
+
+  @tag :skip
+  test "get_transaction" do
+    {:ok, result} = Graphene.get_transaction(314,1)
+    assert [] = result
   end
 
 
