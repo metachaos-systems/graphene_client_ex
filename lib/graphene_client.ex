@@ -82,10 +82,13 @@ defmodule Graphene do
     call_db "lookup_accounts", [lower_bound_name, limit]
   end
 
+  @doc """
+  Get the total number of accounts registered with the blockchain.
+  """
   def get_account_count() do
     call_db "get_account_count", []
   end
-  
+
   def get_block(block_height) do
     call [@db_api, "get_block", [block_height]]
   end
