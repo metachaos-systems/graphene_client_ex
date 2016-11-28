@@ -67,5 +67,10 @@ defmodule GrapheneTest do
       ["fractalnode-blockpay-tr", "1.2.133034"]] = result
   end
 
+  test "get_account_count" do
+    {:ok, result} = Graphene.get_account_count()
+    assert result > 1337
+  end
+
 
 end
