@@ -39,8 +39,13 @@ defmodule Graphene do
     end
   end
 
+  # Accounts
   def get_accounts(account_list) do
     call [@db_api, "get_accounts", [account_list]]
+  end
+
+  def get_account_by_name(name) do
+    call_db "get_account_by_name", [name]
   end
 
   def get_block(block_height) do

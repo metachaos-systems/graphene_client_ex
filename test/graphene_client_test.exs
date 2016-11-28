@@ -46,5 +46,10 @@ defmodule GrapheneTest do
     assert %{"parameters"  => %{}} = result
   end
 
+  test "get_account_by_name" do
+    {:ok, result} = Graphene.get_account_by_name("dan")
+    assert %{"id" => "1.2.309"} = result
+  end
+
 
 end
