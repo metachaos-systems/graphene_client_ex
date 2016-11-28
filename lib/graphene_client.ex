@@ -69,7 +69,18 @@ defmodule Graphene do
     call_db "get_account_references", [id]
   end
 
-
+  @doc """
+  Return
+  Map of account names to corresponding IDs
+  Parameters
+  lower_bound_name -
+  Lower bound of the first name to return
+  limit -
+  Maximum number of results to return must not exceed 1000
+  """
+  def lookup_accounts(lower_bound_name, limit) do
+    call_db "lookup_accounts", [lower_bound_name, limit]
+  end
 
   def get_block(block_height) do
     call [@db_api, "get_block", [block_height]]

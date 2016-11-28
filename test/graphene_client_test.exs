@@ -61,5 +61,11 @@ defmodule GrapheneTest do
     assert ["1.2.102338"] = result
   end
 
+  test "lookup_accounts" do
+    {:ok, result} = Graphene.lookup_accounts("fractal", 3)
+    assert [["fractalist5", "1.2.117491"], ["fractaln0de", "1.2.138432"],
+      ["fractalnode-blockpay-tr", "1.2.133034"]] = result
+  end
+
 
 end
