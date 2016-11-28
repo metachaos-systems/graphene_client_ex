@@ -51,5 +51,10 @@ defmodule GrapheneTest do
     assert %{"id" => "1.2.309"} = result
   end
 
+  test "get_account_references" do
+    {:ok, result} = Graphene.get_account_references("1.2.309")
+    assert ["1.2.102338"] = result
+  end
+
 
 end
