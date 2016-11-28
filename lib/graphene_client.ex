@@ -39,17 +39,6 @@ defmodule Graphene do
     end
   end
 
-  @doc """
-    Sends an event to the WebSocket server
-  """
-  defp send_jsonrpc_call(id, params) do
-    send Graphene.WS, {:send, %{jsonrpc: "2.0", id: id, params: params, method: "call"}}
-  end
-
-  defp gen_id do
-    round(:rand.uniform * 1.0e16)
-  end
-
   def get_accounts(account_list) do
     call [@db_api, "get_accounts", [account_list]]
   end
@@ -69,5 +58,21 @@ defmodule Graphene do
   def get_global_properties() do
      call [@db_api, "get_global_properties", []]
   end
+
+  def call_db(method_name, method_params) do
+     call [@db_api, method_name, method_params]
+  end
+
+  @doc """
+    Sends an event to the WebSocket server
+  """
+  defp send_jsonrpc_call(id, params) do
+    send Graphene.WS, {:send, %{jsonrpc: "2.0", id: id, params: params, method: "call"}}
+  end
+
+  defp gen_id do
+    round(:rand.uniform * 1.0e16)
+  end
+
 
 end
