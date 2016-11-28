@@ -91,7 +91,23 @@ defmodule GrapheneTest do
 
   test "get_named_account_balances with asset ids" do
     {:ok, result} = Graphene.get_named_account_balances("dan", ["1.3.121"])
-    assert %{"amount" => _, "asset_id" => "1.3.121"}  = hd(result)
+    assert %{"amount" => _, "asset_id" => "1.3.121"}  = hd(result) # FIXME
+  end
+
+  @tag :skip
+  test "get_balance_objects with asset ids" do
+    {:ok, result} = Graphene.get_balance_objects() # FIXME what are the right adresses for this call?
+    assert %{}  = result
+  end
+
+  test "get_vested_balances" do
+     {:ok, result} = Graphene.get_vested_balances(["1.15.0"])
+     assert [%{"amount" => _, "asset_id" => "1.3.0"}] = result
+  end
+
+  test "get_vesting_balances" do
+     {:ok, result} = Graphene.get_vesting_balances("1.2.309")
+     assert %{"balance" => %{"amount" =>_}} = hd(result)
   end
 
 

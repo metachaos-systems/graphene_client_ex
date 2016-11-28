@@ -123,6 +123,22 @@ defmodule Graphene do
     call_db "get_named_account_balances", [account_name, assets_ids]
   end
 
+  @doc """
+  Return
+  all unclaimed balance objects for a set of addresses
+  """
+  def get_balance_objects(addresses) do
+    call_db "get_named_account_balances", [addresses]
+  end
+
+  def get_vested_balances(balance_id) do
+    call_db "get_vested_balances", [balance_id]
+  end
+
+  def get_vesting_balances(account_id) do
+    call_db "get_vesting_balances", [account_id]
+  end
+
   def get_block(block_height) do
     call [@db_api, "get_block", [block_height]]
   end
