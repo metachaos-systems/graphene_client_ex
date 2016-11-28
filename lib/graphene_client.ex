@@ -40,6 +40,7 @@ defmodule Graphene do
   end
 
   # Accounts
+
   def get_accounts(account_list) do
     call [@db_api, "get_accounts", [account_list]]
   end
@@ -87,6 +88,39 @@ defmodule Graphene do
   """
   def get_account_count() do
     call_db "get_account_count", []
+  end
+
+  # BALANCES
+
+  @doc """
+  Get an account’s balances in various assets.
+  Return
+  Balances of the account
+
+  Parameters
+  id -
+  ID of the account to get balances for
+  assets -
+  IDs of the assets to get balances of; if empty, get all assets account has a balance in
+  FIXME: passing a list of more than 1 assets_ids doesn't work as expected.
+  """
+  def get_account_balances(account_id) do
+    call_db "get_account_balances", [account_id, []]
+  end
+
+  def get_account_balances(account_id, assets_ids) do
+    call_db "get_account_balances", [account_id, assets_ids]
+  end
+
+  @doc """
+  Semantically equivalent to get_account_balances, but takes a name instead of an ID.
+  """
+  def get_named_account_balances(account_name) do
+    call_db "get_named_account_balances", [account_name, []]
+  end
+
+  def get_named_account_balances(account_name, assets_ids) do
+    call_db "get_named_account_balances", [account_name, assets_ids]
   end
 
   def get_block(block_height) do

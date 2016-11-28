@@ -72,5 +72,28 @@ defmodule GrapheneTest do
     assert result > 1337
   end
 
+  # Balances
+
+  test "get_account_balances without assets ids" do
+    {:ok, result} = Graphene.get_account_balances("1.2.309")
+    assert  %{"amount" => _, "asset_id" => _}  = hd(result)
+  end
+
+  test "get_account_balances with assets ids" do
+    {:ok, result} = Graphene.get_account_balances("1.2.309", ["1.3.121"])
+    assert %{"amount" => _, "asset_id" => "1.3.121"}  = hd(result)
+  end
+
+  test "get_named_account_balances without assets ids" do
+    {:ok, result} = Graphene.get_named_account_balances("dan")
+    assert  %{"amount" => _, "asset_id" => _}  = hd(result)
+  end
+
+  test "get_named_account_balances with asset ids" do
+    {:ok, result} = Graphene.get_named_account_balances("dan", ["1.3.121"])
+    assert %{"amount" => _, "asset_id" => "1.3.121"}  = hd(result)
+  end
+
+
 
 end
