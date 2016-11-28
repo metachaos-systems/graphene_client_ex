@@ -56,5 +56,10 @@ defmodule GrapheneTest do
     assert ["1.2.102338"] = result
   end
 
+  test "lookup_account_names" do
+    {:ok, result} = Graphene.lookup_account_names("1.2.309")
+    assert ["1.2.102338"] = result
+  end
+
 
 end

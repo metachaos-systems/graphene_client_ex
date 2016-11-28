@@ -48,8 +48,12 @@ defmodule Graphene do
     call_db "get_account_by_name", [name]
   end
 
-  def get_account_references(name) do
-    call_db "get_account_references", [name]
+  def get_account_references(id) do
+    call_db "get_account_references", [id]
+  end
+
+  def lookup_account_names(id) do
+    call_db "get_account_references", [id]
   end
 
   def get_block(block_height) do
