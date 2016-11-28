@@ -48,13 +48,28 @@ defmodule Graphene do
     call_db "get_account_by_name", [name]
   end
 
+  @doc """
+  Return
+  all accounts that referr to the key or account id in their owner or active authorities.
+  """
   def get_account_references(id) do
     call_db "get_account_references", [id]
   end
 
+  @doc """
+  Get a list of accounts by name.
+
+  Return
+  The accounts holding the provided names
+  Parameters
+  account_names -
+  Names of the accounts to retrieve
+  """
   def lookup_account_names(id) do
     call_db "get_account_references", [id]
   end
+
+
 
   def get_block(block_height) do
     call [@db_api, "get_block", [block_height]]
