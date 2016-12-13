@@ -3,6 +3,7 @@ defmodule Graphene do
   alias Graphene.{IdStore, WS}
   @db_api 0
 
+  defdelegate get_assets(asset_ds), to: DatabaseApi
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
