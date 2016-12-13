@@ -11,7 +11,13 @@ defmodule GrapheneDatabaseApiTest do
   end
 
   test "get_assets " do
-     {:ok, result} = Graphene.get_assets(["1337"])
+     {:ok, result} = Graphene.get_assets([""])
      assert %{"balance" => %{"amount" =>_}} = hd(result)
+  end
+
+  test "list_assets " do
+     {:ok, result} = Graphene.list_assets("BTS", 10)
+     assert is_list(result)
+     assert Enum.find(result, :nil, &(&1["symbol"] == "BTSBOTS"))["id"] == "1.3.241"
   end
 end
