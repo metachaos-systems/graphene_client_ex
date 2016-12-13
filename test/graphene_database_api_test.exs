@@ -11,8 +11,8 @@ defmodule GrapheneDatabaseApiTest do
   end
 
   test "get_assets " do
-     {:ok, result} = Graphene.get_assets([""])
-     assert %{"balance" => %{"amount" =>_}} = hd(result)
+     {:ok, result} = Graphene.get_assets(["1.3.241"])
+     assert %{"symbol" => "BTSBOTS"} = hd(result)
   end
 
   test "list_assets " do
