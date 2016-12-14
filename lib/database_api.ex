@@ -9,6 +9,16 @@ defmodule DatabaseApi do
   """
   @api 0
 
+  # BLOCKS
+  @doc """
+  Retrieve the current dynamic_global_property_object.
+  """
+  def get_dynamic_global_properties() do
+     call "get_dynamic_global_properties", []
+  end
+
+  # ASSETS
+
   def get_assets(asset_ids) do
     call("get_assets", [asset_ids])
   end

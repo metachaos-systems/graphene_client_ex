@@ -10,6 +10,11 @@ defmodule GrapheneDatabaseApiTest do
     {:ok, []}
   end
 
+  test "get_dynamic_global_properties" do
+    {:ok, result} = Graphene.get_dynamic_global_properties()
+    assert %{"head_block_id" => _, "head_block_number" => _, "id" => _, } = result
+  end
+
   test "get_assets " do
      {:ok, result} = Graphene.get_assets(["1.3.241"])
      assert %{"symbol" => "BTSBOTS"} = hd(result)
