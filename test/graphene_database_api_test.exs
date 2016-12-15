@@ -28,6 +28,13 @@ defmodule GrapheneDatabaseApiTest do
 
   test "lookup_asset_symbols" do
     {:ok, result}  = Graphene.lookup_asset_symbols("BTS")
-    assert [%{"dynamic_asset_data_id" => "2.3.0"}] = result 
+    assert [%{"dynamic_asset_data_id" => "2.3.0"}] = result
+  end
+
+  # WITNESSES
+
+  test "get_witnesses" do
+    {:ok, result}  = Graphene.get_witnesses("")
+    assert [] = result
   end
 end

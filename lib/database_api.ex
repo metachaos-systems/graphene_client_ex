@@ -47,6 +47,23 @@ defmodule DatabaseApi do
     call("lookup_asset_symbols", [symbols])
   end
 
+  # WITNESSES
+
+  @doc """
+  Get a list of witnesses by ID.
+  This function has semantics identical to get_objects
+  Return
+  The witnesses corresponding to the provided IDs
+  Parameters
+  witness_ids -
+  IDs of the witnesses to retrieve
+  """
+  def get_witnesses(ids) do
+    ids = List.wrap(ids)
+    call("get_witnesses", [ids])
+  end
+
+
   # UTILITY
   def call(method_name, method_params) do
      Graphene.call [@api, method_name, method_params]
