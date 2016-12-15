@@ -25,4 +25,9 @@ defmodule GrapheneDatabaseApiTest do
      assert is_list(result)
      assert Enum.find(result, :nil, &(&1["symbol"] == "BTSBOTS"))["id"] == "1.3.241"
   end
+
+  test "lookup_asset_symbols" do
+    {:ok, result}  = Graphene.lookup_asset_symbols("BTS")
+    assert [%{"dynamic_asset_data_id" => "2.3.0"}] = result 
+  end
 end
