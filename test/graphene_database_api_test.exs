@@ -34,8 +34,8 @@ defmodule GrapheneDatabaseApiTest do
   # WITNESSES
 
   test "get_witnesses" do
-    {:ok, result}  = Graphene.get_witnesses("")
-    assert [] = result
+    {:ok, result}  = Graphene.get_witnesses("1.6.23")
+    assert [%{"id" => "1.6.23", "last_aslot" => _}] = result
   end
 
   test "lookup_witness_accounts" do
