@@ -64,6 +64,18 @@ defmodule DatabaseApi do
   end
 
   @doc """
+  Get the witness owned by a given account.
+  Return
+  The witness object, or null if the account does not have a witness
+  Parameters
+  account -
+  The ID of the account whose witness should be retrieved
+  """
+  def get_witness_by_account(account) do
+    call("get_witness_by_account", [account])
+  end
+
+  @doc """
   Get names and IDs for registered witnesses.
   Return
   Map of witness names to corresponding IDs
@@ -74,7 +86,7 @@ defmodule DatabaseApi do
   Maximum number of results to return must not exceed 1000
   """
   def lookup_witness_accounts(lower_bound, limit) do
-    call("lookup_witness_accounts",[lower_bound, limit]) 
+    call("lookup_witness_accounts",[lower_bound, limit])
   end
 
   # UTILITY

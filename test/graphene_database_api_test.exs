@@ -38,6 +38,11 @@ defmodule GrapheneDatabaseApiTest do
     assert [%{"id" => "1.6.23", "last_aslot" => _}] = result
   end
 
+  test "get_witness_by_account" do
+    {:ok, result}  = Graphene.get_witness_by_account("1.2.282")
+    assert is_nil(result)
+  end
+
   test "lookup_witness_accounts" do
     {:ok, result} = Graphene.lookup_witness_accounts("fractal", 3)
     assert is_list(result)
