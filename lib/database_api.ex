@@ -63,6 +63,19 @@ defmodule DatabaseApi do
     call("get_witnesses", [ids])
   end
 
+  @doc """
+  Get names and IDs for registered witnesses.
+  Return
+  Map of witness names to corresponding IDs
+  Parameters
+  lower_bound_name -
+  Lower bound of the first name to return
+  limit -
+  Maximum number of results to return must not exceed 1000
+  """
+  def lookup_witness_accounts(lower_bound, limit) do
+    call("lookup_witness_accounts",[lower_bound, limit]) 
+  end
 
   # UTILITY
   def call(method_name, method_params) do

@@ -7,6 +7,7 @@ defmodule Graphene do
   defdelegate list_assets(lower_bound, limit), to: DatabaseApi
   defdelegate lookup_asset_symbols(symbols), to: DatabaseApi
   defdelegate get_witnesses(ids), to: DatabaseApi
+  defdelegate lookup_witness_accounts(lower_bound, limit), to: DatabaseApi
   defdelegate get_dynamic_global_properties(), to: DatabaseApi
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications

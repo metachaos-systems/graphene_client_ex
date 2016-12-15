@@ -37,4 +37,9 @@ defmodule GrapheneDatabaseApiTest do
     {:ok, result}  = Graphene.get_witnesses("")
     assert [] = result
   end
+
+  test "lookup_witness_accounts" do
+    {:ok, result} = Graphene.lookup_witness_accounts("fractal", 3)
+    assert is_list(result)
+  end
 end

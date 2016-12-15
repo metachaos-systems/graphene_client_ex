@@ -61,6 +61,7 @@ defmodule GrapheneTest do
     assert ["1.2.102338"] = result
   end
 
+  #FIXME the lookup results will change with time, test will not
   test "lookup_accounts" do
     {:ok, result} = Graphene.lookup_accounts("fractal", 3)
     assert [["fractalist5", "1.2.117491"], ["fractaln0de", "1.2.138432"],
