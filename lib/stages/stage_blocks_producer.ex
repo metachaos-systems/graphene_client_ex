@@ -28,7 +28,7 @@ defmodule Graphene.Stage.Blocks.Producer do
       {:ok, block} = get_block(height)
       if block do
         block = put_in(block, ["height"], height)
-        IO.inspect block
+        block = struct(Graphene.Block, block)
         state = put_in(state, [:previous_height], height)
         {:noreply, [block], state}
       else
