@@ -1,6 +1,6 @@
 defmodule Graphene.Stage.Blocks.Producer do
   @moduledoc """
-  Produces Golos block data with @tick_interval
+  Produces new Graphene blocks 
   """
   import Graphene
   @tick_interval 1_000
