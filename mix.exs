@@ -33,6 +33,8 @@ defmodule GrapheneClientEx.Mixfile do
   defp deps do
     [
       {:websocket_client, "~> 1.2.0"},
+      {:gen_stage, ">= 0.0.0"},
+      {:flow, ">= 0.0.0"},
       {:poison, "~> 2.0"},
       {:credo, ">= 0.0.0", only: [:test, :dev]},
       {:ex_doc, ">= 0.0.0", only: :dev},
