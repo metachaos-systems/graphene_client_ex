@@ -1,6 +1,6 @@
 defmodule Graphene.Stage.Blocks.Producer do
   @moduledoc """
-  Produces new Graphene blocks 
+  Produces new Graphene blocks
   """
   import Graphene
   @tick_interval 1_000
@@ -28,6 +28,7 @@ defmodule Graphene.Stage.Blocks.Producer do
       {:ok, block} = get_block(height)
       if block do
         block = put_in(block, ["height"], height)
+        IO.inspect block
         state = put_in(state, [:previous_height], height)
         {:noreply, [block], state}
       else
