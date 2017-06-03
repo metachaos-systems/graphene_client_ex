@@ -14,17 +14,17 @@ defmodule Graphene do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-
-    url = Application.get_env(:graphene_client_ex, :url)
-
     unless url, do: throw("Graphene WS url is NOT configured.")
 
+    url = Application.get_env(:graphene_client_ex, :url)
+    activate_stage_sup? = Application.get_env(:graphene_client_ex, :activate_stage_sup)
+    stages = if activate_stage_sup?, do: [worker(Grahene.Stage.Blocks.Producer, [])], else: []
     # Define workers and child supervisors to be supervised
     children = [
       worker(IdStore, []),
       worker(Graphene.WS, [url])
     ]
-
+    children = children ++ stages
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Graphene.Supervisor]
