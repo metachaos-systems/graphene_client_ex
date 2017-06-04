@@ -30,4 +30,5 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 config :graphene_client_ex,
-  url: System.get_env("GRAPHENE_URL") || "wss://bitshares.openledger.info/ws"
+  url: System.get_env("GRAPHENE_URL"),
+  activate_stage_sup: true
