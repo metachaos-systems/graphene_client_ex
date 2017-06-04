@@ -1,6 +1,6 @@
 defmodule Graphene do
   use Application
-  alias Graphene.{IdStore, WS}
+  alias Graphene.{IdStore, WS, Stage}
   @db_api 0
 
   defdelegate get_assets(asset_ds), to: DatabaseApi
@@ -18,7 +18,7 @@ defmodule Graphene do
     url = Application.get_env(:graphene_client_ex, :url) || "wss://bitshares.openledger.info/ws"
 
     activate_stage_sup? = Application.get_env(:graphene_client_ex, :activate_stage_sup)
-    stages = if activate_stage_sup?, do: [worker(Grahene.Stage.Blocks.Producer, [])], else: []
+    stages = if activate_stage_sup?, do: [supervisor(Stage.Supervisor, [])], else: []
     # Define workers and child supervisors to be supervised
     children = [
       worker(IdStore, []),
