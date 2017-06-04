@@ -10,7 +10,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:graphene_client_ex, "~> 0.2.0"}]
+      [{:graphene_client_ex, "~> 0.4.0"}]
     end
     ```
 
@@ -29,7 +29,21 @@ First, add a websockets url for the graphene daemon, for example, `wss://bitshar
 
 ```elixir
     config :graphene_client_ex,
-      url: "GRAPHENE_URL"
+      url: "GRAPHENE_URL",
+      activate_stage_sup: true
 ```
+
+If you want to activate GenStage blocks producer, use `activate_stage_sup: true` in the config file.
+
+# GenStage
+
+It's easy to subscribe to new blockchain events with consumers that implement GenStage specification for handling and exchanging events among Elixir/Erlang processes.   
+
+If `activate_stage_sup` is enabled, following GenStage processes are started and registered:
+
+* Graphene.Stage.Blocks.Producer which, perhaps unsurprisingly, produces new block events
+* Graphene.Stage.Ops.ConsumerProducer [planned]
+* Graphene.Stage.TransformedOps.ConsumerProducer [planned]
+
 
 The main module function is `Graphene.call`. It will block the calling process and return a success tuple with a "result" data from the JSONRPC call response. JSONRPC call ids are handled automatically.
