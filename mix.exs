@@ -36,6 +36,7 @@ defmodule GrapheneClientEx.Mixfile do
       {:gen_stage, ">= 0.0.0"},
       {:flow, ">= 0.0.0"},
       {:poison, "~> 2.0"},
+      {:exconstructor, "~> 1.1.0"},
       {:credo, ">= 0.0.0", only: [:test, :dev]},
       {:ex_doc, ">= 0.0.0", only: :dev},
     ]
