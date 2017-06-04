@@ -2,7 +2,7 @@ defmodule Graphene.Stage.Blocks.Producer do
   @moduledoc """
   Produces new Graphene blocks
   """
-  import Graphene
+  alias Graphene.Block
   @tick_interval 1_000
   use GenStage
 
@@ -20,15 +20,15 @@ defmodule Graphene.Stage.Blocks.Producer do
   end
 
   def handle_info(:tick, state) do
-    {:ok, %{"head_block_number" => height}} = get_dynamic_global_properties()
+    {:ok, %{"head_block_number" => height}} = Graphene.get_dynamic_global_properties()
     noreply_noevents = {:noreply, [], state}
     if height === state[:previous_height] do
       noreply_noevents
     else
-      {:ok, block} = get_block(height)
+      {:ok, block} = Graphene.get_block(height)
       if block do
         block = put_in(block, ["height"], height)
-        block = struct(Graphene.Block, block)
+        block = Graphene.Block.new(block)
         state = put_in(state, [:previous_height], height)
         {:noreply, [block], state}
       else
