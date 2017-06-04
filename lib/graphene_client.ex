@@ -14,9 +14,9 @@ defmodule Graphene do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-    unless url, do: throw("Graphene WS url is NOT configured.")
 
-    url = Application.get_env(:graphene_client_ex, :url)
+    url = Application.get_env(:graphene_client_ex, :url) || "wss://bitshares.openledger.info/ws"
+
     activate_stage_sup? = Application.get_env(:graphene_client_ex, :activate_stage_sup)
     stages = if activate_stage_sup?, do: [worker(Grahene.Stage.Blocks.Producer, [])], else: []
     # Define workers and child supervisors to be supervised
